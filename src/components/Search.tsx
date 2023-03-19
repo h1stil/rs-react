@@ -37,6 +37,7 @@ class Search extends Component {
             value={this.state.search}
             onChange={this.handleChange}
             onBlur={this.handleFormSubmit}
+            id="search-input"
           />
           <button type="submit">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
