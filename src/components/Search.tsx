@@ -4,15 +4,32 @@ import React, { Component } from 'react';
 
 import '../styles/_search.scss';
 
-class Search extends Component {
-  state = {
-    search: '',
-  };
+interface MyProps {
+  search: string;
+}
+interface MyState {
+  search: string;
+}
+
+class Search extends Component<MyProps, MyState> {
+  constructor(props: MyProps) {
+    super(props);
+    this.state = {
+      search: '',
+    };
+  }
+
+  componentDidMount() {
+    const search = localStorage.getItem('search');
+    if (search) {
+      this.setState({ search });
+    }
+  }
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target;
-    const value = input.value;
-    this.setState({ [input.name]: value });
+    const { value } = input;
+    this.setState({ search: value });
   };
 
   handleFormSubmit = () => {
@@ -20,12 +37,8 @@ class Search extends Component {
     localStorage.setItem('search', search);
   };
 
-  componentDidMount() {
-    const search = localStorage.getItem('search');
-    this.setState({ search });
-  }
-
   render() {
+    const { search } = this.state;
     return (
       <div className="search__container">
         <form>
@@ -34,7 +47,7 @@ class Search extends Component {
             placeholder="Search..."
             name="search"
             autoComplete="off"
-            value={this.state.search}
+            value={search}
             onChange={this.handleChange}
             onBlur={this.handleFormSubmit}
             id="search-input"
