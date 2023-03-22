@@ -17,3 +17,12 @@ export type MyState = {
   isLoaded: boolean;
   items: MyCard[];
 };
+
+export interface IFormCard {
+  name: string;
+  date: string;
+  select: string;
+  checkbox: boolean;
+  switcher: string;
+  file: string;
+}
