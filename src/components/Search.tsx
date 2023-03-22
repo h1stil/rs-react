@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import '../styles/_search.scss';
 
 interface MyProps {
-  search: string;
+  search?: string;
 }
 interface MyState {
   search: string;

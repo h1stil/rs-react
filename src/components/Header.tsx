@@ -11,13 +11,18 @@ function Header() {
       </h2>
       <ul className="nav__menu">
         <li className="menu__item">
+          <NavLink to="/" className={({ isActive }) => (isActive ? 'item_active' : '')}>
+            Home
+          </NavLink>
+        </li>
+        <li className="menu__item">
           <NavLink to="/about" className={({ isActive }) => (isActive ? 'item_active' : '')}>
             About Us
           </NavLink>
         </li>
         <li className="menu__item">
-          <NavLink to="/" className={({ isActive }) => (isActive ? 'item_active' : '')}>
-            Home
+          <NavLink to="/form" className={({ isActive }) => (isActive ? 'item_active' : '')}>
+            Form
           </NavLink>
         </li>
       </ul>

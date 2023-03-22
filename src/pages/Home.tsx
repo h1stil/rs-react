@@ -4,7 +4,7 @@ import CardList from '../components/CardList';
 import Search from '../components/Search';
 
 function Home() {
-  document.title = 'RSS React week-1';
+  document.title = 'RSS React';
   return (
     <>
       <Search />
