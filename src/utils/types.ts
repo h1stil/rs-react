@@ -20,9 +20,9 @@ export type MyState = {
 
 export interface IFormCard {
   name: string;
-  date: string;
-  select: string;
-  checkbox: boolean;
-  switcher: string;
+  birthday: string;
+  language: string;
+  terms: boolean;
+  sex: string;
   file: string;
 }
