@@ -18,12 +18,19 @@ type FormErrorState = {
 
 class Form extends Component<FormProps, FormErrorState> {
   inputNameRef: React.RefObject<HTMLInputElement>;
+
   inputBirthdayRef: React.RefObject<HTMLInputElement>;
+
   inputLanguagesRef: React.RefObject<HTMLSelectElement>;
+
   inputMaleRef: React.RefObject<HTMLInputElement>;
+
   inputFemaleRef: React.RefObject<HTMLInputElement>;
+
   inputAvatarRef: React.RefObject<HTMLInputElement>;
+
   inputTermsRef: React.RefObject<HTMLInputElement>;
+
   formRef: React.RefObject<HTMLFormElement>;
 
   constructor(props: FormProps) {
@@ -69,7 +76,7 @@ class Form extends Component<FormProps, FormErrorState> {
       name: this.inputNameRef.current?.value || '',
       birthday: this.inputBirthdayRef.current?.value || '',
       language: this.inputLanguagesRef.current?.value || 'English',
-      sex: sex,
+      sex,
       terms: this.inputTermsRef.current?.checked || false,
       file: avatar,
     };
@@ -88,6 +95,15 @@ class Form extends Component<FormProps, FormErrorState> {
     alert('Card created');
     (event.target as HTMLFormElement).reset();
   }
+
+  validateForm = () => {
+    this.nameValidation();
+    this.dateValidation();
+    this.termsValidation();
+    this.sexValidation();
+    this.languageValidation();
+    this.avatarValidation();
+  };
 
   nameValidation = () => {
     if (this.inputNameRef.current?.value.trim() === '') {
@@ -111,14 +127,6 @@ class Form extends Component<FormProps, FormErrorState> {
       this.setState({ dateErrorState: false });
     }
   };
-
-  languageValidation() {
-    if (this.inputLanguagesRef.current?.value === 'DEFAULT') {
-      this.setState({ languageErrorState: true });
-    } else {
-      this.setState({ languageErrorState: false });
-    }
-  }
 
   sexValidation() {
     if (this.inputMaleRef.current && this.inputFemaleRef.current) {
@@ -150,19 +158,18 @@ class Form extends Component<FormProps, FormErrorState> {
     }
   }
 
-  validateForm = () => {
-    this.nameValidation();
-    this.dateValidation();
-    this.termsValidation();
-    this.sexValidation();
-    this.languageValidation();
-    this.avatarValidation();
-  };
+  languageValidation() {
+    if (this.inputLanguagesRef.current?.value === 'DEFAULT') {
+      this.setState({ languageErrorState: true });
+    } else {
+      this.setState({ languageErrorState: false });
+    }
+  }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit} ref={this.formRef} className="form">
-        <label>
+        <label htmlFor="username-input">
           <span>Name</span>
           <input
             type="text"
@@ -175,17 +182,17 @@ class Form extends Component<FormProps, FormErrorState> {
         {this.state.nameErrorState && (
           <p className="form__error">Name is required (min 3 characters)</p>
         )}
-        <label>
+        <label htmlFor="date-input">
           <span>Birthday</span>
           <input type="date" name="birthday" id="date-input" ref={this.inputBirthdayRef} />
         </label>
         {this.state.dateErrorState && <p className="form__error">Enter date</p>}
-        <label>
+        <label htmlFor="language-select">
           <span>Language</span>
           <select
             name="language"
             id="language-select"
-            defaultValue={'DEFAULT'}
+            defaultValue="DEFAULT"
             ref={this.inputLanguagesRef}
           >
             <option value="DEFAULT" disabled>
@@ -197,7 +204,7 @@ class Form extends Component<FormProps, FormErrorState> {
           </select>
         </label>
         {this.state.languageErrorState && <p className="form__error">Choose one language</p>}
-        <label>
+        <div>
           <span>Sex</span>
           <div>
             <input
@@ -207,7 +214,7 @@ class Form extends Component<FormProps, FormErrorState> {
               value="male"
               ref={this.inputMaleRef}
             />
-            <label>male</label>
+            <p>male</p>
           </div>
           <div>
             <input
@@ -217,11 +224,11 @@ class Form extends Component<FormProps, FormErrorState> {
               value="female"
               ref={this.inputFemaleRef}
             />
-            <label>female</label>
+            <p>female</p>
           </div>
-        </label>
+        </div>
         {this.state.sexErrorState && <p className="form__error">Enter your sex</p>}
-        <label>
+        <label htmlFor="file-input">
           <span>Avatar</span>
           <input
             type="file"
@@ -239,7 +246,7 @@ class Form extends Component<FormProps, FormErrorState> {
           />
         </label>
         {this.state.avatarErrorState && <p className="form__error">Upload avatar</p>}
-        <label>
+        <label htmlFor="terms-input">
           <span>I consent to my personal data</span>
           <input type="checkbox" name="terms" id="terms-input" ref={this.inputTermsRef} />
         </label>

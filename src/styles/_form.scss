@@ -6,6 +6,9 @@
   input {
     width: inherit;
   }
+  input[type='radio'] {
+    height: inherit;
+  }
   label {
     display: flex;
     justify-content: space-between;
@@ -20,15 +23,19 @@
       padding: 0 15px;
       cursor: pointer;
     }
-    div {
-      display: flex;
-      align-items: flex-start;
-      gap: 5px;
-    }
     select {
       border-radius: 5px;
       padding: 5px;
       font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    }
+  }
+  div {
+    display: flex;
+    justify-content: space-between;
+    div {
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
   }
   button {

@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React, { Component } from 'react';
 import { IFormCard } from 'utils/types';
 import Form from '../components/Form';
@@ -23,6 +25,7 @@ class FormPage extends Component<FormPageProps, FormPageState> {
 
   render() {
     document.title = 'Form';
+    const { cards } = this.state;
     return (
       <>
         <div className="form__container">
@@ -30,8 +33,8 @@ class FormPage extends Component<FormPageProps, FormPageState> {
           <Form createCard={(card) => this.createCard(card)} />
         </div>
         <div className="cards__container">
-          {this.state.cards.map((card, index) => (
-            <FormCard key={index} {...card} />
+          {cards.map((card) => (
+            <FormCard key={card.name} {...card} />
           ))}
         </div>
       </>

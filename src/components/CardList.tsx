@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+
 import React, { Component } from 'react';
 import { MyState } from 'utils/types';
 import Card from './Card';

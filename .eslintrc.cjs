@@ -31,6 +31,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'comma-dangle': ['error', 'only-multiline'],
     'react/prop-types': 'off',
+    'react/destructuring-assignment': 'off',
     'react/display-name': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
@@ -43,6 +44,7 @@ module.exports = {
     '@typescript-eslint/no-var-reqiures': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+    'no-alert': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
   settings: {
