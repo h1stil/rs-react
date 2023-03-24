@@ -7,16 +7,16 @@ type FormProps = {
   createCard: (card: IFormCard) => void;
 };
 
-type FormState = {
-  name: '';
-  date: '';
-  select: '';
-  checkbox: false;
-  switcher: '';
-  file: '';
+type FormErrorState = {
+  nameErrorState: boolean;
+  dateErrorState: boolean;
+  languageErrorState: boolean;
+  sexErrorState: boolean;
+  avatarErrorState: boolean;
+  termsErrorState: boolean;
 };
 
-class Form extends Component<FormProps, FormState> {
+class Form extends Component<FormProps, FormErrorState> {
   inputNameRef: React.RefObject<HTMLInputElement>;
   inputBirthdayRef: React.RefObject<HTMLInputElement>;
   inputLanguagesRef: React.RefObject<HTMLSelectElement>;
@@ -37,6 +37,14 @@ class Form extends Component<FormProps, FormState> {
     this.inputFemaleRef = createRef();
     this.inputAvatarRef = createRef();
     this.inputTermsRef = createRef();
+    this.state = {
+      nameErrorState: false,
+      dateErrorState: false,
+      languageErrorState: false,
+      sexErrorState: false,
+      avatarErrorState: false,
+      termsErrorState: false,
+    };
   }
 
   handleSubmit(event: FormEvent): void {
@@ -66,12 +74,90 @@ class Form extends Component<FormProps, FormState> {
       file: avatar,
     };
 
+    if (
+      this.state.avatarErrorState ||
+      this.state.dateErrorState ||
+      this.state.languageErrorState ||
+      this.state.nameErrorState ||
+      this.state.sexErrorState ||
+      this.state.termsErrorState
+    ) {
+      return;
+    }
     this.props.createCard(data);
-    // alert('Card dobavlena');
+    alert('Card created');
     (event.target as HTMLFormElement).reset();
-
-    console.log(this.state);
   }
+
+  nameValidation = () => {
+    if (this.inputNameRef.current?.value.trim() === '') {
+      this.setState({ nameErrorState: true });
+    } else {
+      this.setState({ nameErrorState: false });
+    }
+
+    if (this.inputNameRef.current!.value.length < 4) {
+      this.setState({ nameErrorState: true });
+    } else {
+      this.setState({ nameErrorState: false });
+    }
+  };
+
+  dateValidation = () => {
+    const dateValue = this.inputBirthdayRef.current?.value;
+    if (dateValue === '') {
+      this.setState({ dateErrorState: true });
+    } else {
+      this.setState({ dateErrorState: false });
+    }
+  };
+
+  languageValidation() {
+    if (this.inputLanguagesRef.current?.value === 'DEFAULT') {
+      this.setState({ languageErrorState: true });
+    } else {
+      this.setState({ languageErrorState: false });
+    }
+  }
+
+  sexValidation() {
+    if (this.inputMaleRef.current && this.inputFemaleRef.current) {
+      if (this.inputMaleRef.current.checked) {
+        this.setState({ sexErrorState: false });
+      } else if (this.inputFemaleRef.current.checked) {
+        this.setState({ sexErrorState: false });
+      } else {
+        this.setState({ sexErrorState: true });
+      }
+    }
+  }
+
+  avatarValidation() {
+    const files = this.inputAvatarRef.current?.files;
+    if (!files?.length) {
+      this.setState({ avatarErrorState: true });
+    } else {
+      this.setState({ avatarErrorState: false });
+    }
+  }
+
+  termsValidation() {
+    const flag = this.inputTermsRef.current?.checked;
+    if (flag) {
+      this.setState({ termsErrorState: false });
+    } else {
+      this.setState({ termsErrorState: true });
+    }
+  }
+
+  validateForm = () => {
+    this.nameValidation();
+    this.dateValidation();
+    this.termsValidation();
+    this.sexValidation();
+    this.languageValidation();
+    this.avatarValidation();
+  };
 
   render() {
     return (
@@ -86,10 +172,14 @@ class Form extends Component<FormProps, FormState> {
             ref={this.inputNameRef}
           />
         </label>
+        {this.state.nameErrorState && (
+          <p className="form__error">Name is required (min 3 characters)</p>
+        )}
         <label>
           <span>Birthday</span>
           <input type="date" name="birthday" id="date-input" ref={this.inputBirthdayRef} />
         </label>
+        {this.state.dateErrorState && <p className="form__error">Enter date</p>}
         <label>
           <span>Language</span>
           <select
@@ -106,6 +196,7 @@ class Form extends Component<FormProps, FormState> {
             <option value="Other">Other</option>
           </select>
         </label>
+        {this.state.languageErrorState && <p className="form__error">Choose one language</p>}
         <label>
           <span>Sex</span>
           <div>
@@ -129,6 +220,7 @@ class Form extends Component<FormProps, FormState> {
             <label>female</label>
           </div>
         </label>
+        {this.state.sexErrorState && <p className="form__error">Enter your sex</p>}
         <label>
           <span>Avatar</span>
           <input
@@ -146,11 +238,15 @@ class Form extends Component<FormProps, FormState> {
             }}
           />
         </label>
+        {this.state.avatarErrorState && <p className="form__error">Upload avatar</p>}
         <label>
           <span>I consent to my personal data</span>
           <input type="checkbox" name="terms" id="terms-input" ref={this.inputTermsRef} />
         </label>
-        <button type="submit">Submit</button>
+        {this.state.termsErrorState && <p className="form__error">Confirm personal data</p>}
+        <button type="submit" onClick={this.validateForm}>
+          Submit
+        </button>
       </form>
     );
   }

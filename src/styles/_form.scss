@@ -39,4 +39,11 @@
     background-color: #fff;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   }
+
+  .form__error {
+    text-align: end;
+    color: #ff532c;
+    margin-top: -10px;
+    font-size: 0.8rem;
+  }
 }

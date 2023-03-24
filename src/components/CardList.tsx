@@ -44,19 +44,7 @@ class CardList extends Component<object, MyState> {
         {Array.isArray(items) ? (
           items.map((item) => (
             <div key={item.id}>
-              <Card
-                id={item.id}
-                title={item.title}
-                description={item.description}
-                price={item.price}
-                discountPercentage={item.discountPercentage}
-                rating={item.rating}
-                stock={item.stock}
-                brand={item.brand}
-                category={item.category}
-                thumbnail={item.thumbnail}
-                images={item.images}
-              />
+              <Card {...item} />
             </div>
           ))
         ) : (
