@@ -59,7 +59,7 @@ class Form extends Component<FormProps, FormErrorState> {
 
     let avatar = '';
     if (this.inputAvatarRef.current && this.inputAvatarRef.current.files) {
-      avatar = URL.createObjectURL(this.inputAvatarRef.current.files[0]);
+      avatar = URL.createObjectURL(this.inputAvatarRef.current.files[0] as Blob | MediaSource);
     }
 
     let sex = '';
@@ -175,6 +175,7 @@ class Form extends Component<FormProps, FormErrorState> {
             type="text"
             name="name"
             id="username-input"
+            data-testid="username-input"
             autoComplete="off"
             ref={this.inputNameRef}
           />
@@ -251,7 +252,7 @@ class Form extends Component<FormProps, FormErrorState> {
           <input type="checkbox" name="terms" id="terms-input" ref={this.inputTermsRef} />
         </label>
         {this.state.termsErrorState && <p className="form__error">Confirm personal data</p>}
-        <button type="submit" onClick={this.validateForm}>
+        <button type="submit" onClick={this.validateForm} data-testid="submit-button">
           Submit
         </button>
       </form>
