@@ -1,0 +1,56 @@
+.form {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 280px;
+  input {
+    width: inherit;
+  }
+  input[type='radio'] {
+    height: inherit;
+  }
+  label {
+    display: flex;
+    justify-content: space-between;
+    input {
+      border-radius: 5px;
+      padding: 5px;
+      height: 25px;
+      font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+      background-color: #fff;
+    }
+    input[type='button'] {
+      padding: 0 15px;
+      cursor: pointer;
+    }
+    select {
+      border-radius: 5px;
+      padding: 5px;
+      font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    }
+  }
+  div {
+    display: flex;
+    justify-content: space-between;
+    div {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+  button {
+    width: 120px;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+    background-color: #fff;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  }
+
+  .form__error {
+    text-align: end;
+    color: #ff532c;
+    margin-top: -10px;
+    font-size: 0.8rem;
+  }
+}
