@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import '../styles/_search.scss';
 
-const Search = () => {
+function Search() {
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
@@ -42,6 +42,6 @@ const Search = () => {
       </form>
     </div>
   );
-};
+}
 
 export default Search;

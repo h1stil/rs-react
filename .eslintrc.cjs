@@ -46,6 +46,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'no-alert': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'no-shadow': 'off',
   },
   settings: {
     react: {

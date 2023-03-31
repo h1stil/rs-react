@@ -13,7 +13,7 @@ export type MyCard = {
 };
 
 export type MyState = {
-  error: null | Error;
+  isError: null | Error;
   isLoaded: boolean;
   items: MyCard[];
 };

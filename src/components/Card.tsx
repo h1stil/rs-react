@@ -1,9 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import '../styles/_card.scss';
 import { MyCard } from 'utils/types';
 
-const Card: FC<MyCard> = (props) => {
+function Card(props: MyCard) {
   return (
     <div className="card">
       <h4 className="card__title">{props.title}</h4>
@@ -17,6 +17,6 @@ const Card: FC<MyCard> = (props) => {
       </div>
     </div>
   );
-};
+}
 
 export default Card;
