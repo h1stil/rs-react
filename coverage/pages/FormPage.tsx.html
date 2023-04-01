@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.55% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/9</span>
+                <span class='fraction'>4/8</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>1/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/8</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
@@ -99,18 +99,7 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,17 +113,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,7 +128,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,46 +137,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable react/jsx-props-no-spreading */
 &nbsp;
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { IFormCard } from 'utils/types';
 import Form from '../components/Form';
 import FormCard from '../components/FormCard';
 import '../styles/_formPage.scss';
 &nbsp;
-type FormPageProps = Record&lt;string, never&gt;;
 type FormPageState = {
   cards: IFormCard[];
 };
 &nbsp;
-class FormPage extends Component&lt;FormPageProps, FormPageState&gt; {
-  constructor(props: FormPageProps) {
-    super(props);
-    this.state = {
-      cards: [],
-    };
-  }
+function FormPage() {
+  const [totalCards, setTotalCards] = useState&lt;FormPageState&gt;({ cards: [] });
 &nbsp;
-<span class="fstat-no" title="function not covered" >  createCard(c</span>ard: IFormCard) {
-<span class="cstat-no" title="statement not covered" >    this.setState(<span class="fstat-no" title="function not covered" >(s</span>tate: FormPageState) =&gt; (<span class="cstat-no" title="statement not covered" >{ cards: [...state.cards, card] }))</span>;</span>
-  }
+  const createCard = <span class="fstat-no" title="function not covered" >(c</span>ard: IFormCard) =&gt; {
+<span class="cstat-no" title="statement not covered" >    setTotalCards(<span class="fstat-no" title="function not covered" >(s</span>tate: FormPageState) =&gt; (<span class="cstat-no" title="statement not covered" >{ cards: [...state.cards, card] }))</span>;</span>
+  };
 &nbsp;
-  render() {
-    document.title = 'Form';
-    const { cards } = this.state;
-    return (
-      &lt;&gt;
-        &lt;div className="form__container"&gt;
-          &lt;h2&gt;Create card&lt;/h2&gt;
-          &lt;Form createCard={<span class="fstat-no" title="function not covered" >(c</span>ard) =&gt; <span class="cstat-no" title="statement not covered" >this.createCard(card)} /</span>&gt;
-        &lt;/div&gt;
-        &lt;div className="cards__container"&gt;
-          {cards.map(<span class="fstat-no" title="function not covered" >(c</span>ard) =&gt; (
-<span class="cstat-no" title="statement not covered" >            &lt;FormCard key={card.name} {...card} /&gt;</span>
-          ))}
-        &lt;/div&gt;
-      &lt;/&gt;
-    );
-  }
+  document.title = 'Form';
+  return (
+    &lt;&gt;
+      &lt;div className="form__container"&gt;
+        &lt;h2&gt;Create card&lt;/h2&gt;
+        &lt;Form createCard={<span class="fstat-no" title="function not covered" >(c</span>ard) =&gt; <span class="cstat-no" title="statement not covered" >createCard(card)} /</span>&gt;
+      &lt;/div&gt;
+      &lt;div className="cards__container"&gt;
+        {totalCards.cards.map(<span class="fstat-no" title="function not covered" >(c</span>ard) =&gt; (
+<span class="cstat-no" title="statement not covered" >          &lt;FormCard key={card.name} {...card} /&gt;</span>
+        ))}
+      &lt;/div&gt;
+    &lt;/&gt;
+  );
 }
 &nbsp;
 export default FormPage;
@@ -205,7 +178,7 @@ export default FormPage;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-27T21:56:16.965Z
+                at 2023-04-01T13:25:38.783Z
             </div>
         <script src="../prettify.js"></script>
         <script>

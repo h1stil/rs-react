@@ -9,14 +9,14 @@ function FormCard(props: IFormCard) {
     return Math.abs(age.getUTCFullYear() - 1970);
   };
 
-  const { name, file, language, birthday, sex } = props;
+  const avatarSrc = URL.createObjectURL(props.file as unknown as Blob | MediaSource);
   return (
     <div className="form__item">
-      <img src={file} alt="avatar" />
-      <p>name: {name}</p>
-      <p>age: {getAge(birthday)}</p>
-      <p>language: {language}</p>
-      <p>sex: {sex}</p>
+      <img src={avatarSrc} alt="avatar" />
+      <p>name: {props.name}</p>
+      <p>age: {getAge(props.birthday)}</p>
+      <p>language: {props.language}</p>
+      <p>sex: {props.sex}</p>
     </div>
   );
 }
