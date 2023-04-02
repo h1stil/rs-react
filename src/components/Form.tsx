@@ -34,7 +34,7 @@ function Form({ createCard }: FormProps) {
       birthday: data.date || '',
       language: data.language || 'English',
       terms: data.terms || false,
-      file: data.avatar[0],
+      file: URL.createObjectURL(data.avatar[0] as unknown as Blob | MediaSource),
     };
 
     createCard(cardData);
