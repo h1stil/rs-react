@@ -26,3 +26,10 @@ export interface IFormCard {
   sex: string;
   file: string;
 }
+
+export interface IFetch {
+  products: MyCard[];
+  total: number;
+  skip: number;
+  limit: number;
+}

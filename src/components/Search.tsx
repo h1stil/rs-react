@@ -14,12 +14,6 @@ function Search() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   window.addEventListener('storage', () => {
-  //     console.log('change');
-  //   });
-  // }, []);
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
     setSearchValue(input);

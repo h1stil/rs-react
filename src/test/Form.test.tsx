@@ -19,6 +19,7 @@ describe('Testing Form', () => {
     expect(container.querySelector('#sex-female-input'));
     expect(container.querySelector('#file-input'));
     expect(container.querySelector('#terms-input'));
+    expect(container.querySelector('#terms-input'));
   });
 
   test('check error message when form is empty', () => {

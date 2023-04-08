@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React, { useEffect, useState } from 'react';
-import { MyState } from 'utils/types';
+import { IFetch, MyCard, MyState } from 'utils/types';
 import Card from './Card';
 import '../styles/_paginations.scss';
 
@@ -29,7 +29,7 @@ function CardList() {
         .then((res) => res.json())
         .then(
           (result) => {
-            setCards({ isLoaded: true, items: result.products, isError });
+            setCards({ isLoaded: true, items: (result as IFetch).products, isError });
           },
           (error) => {
             setCards({
@@ -45,7 +45,7 @@ function CardList() {
         .then((res) => res.json())
         .then(
           (result) => {
-            setCards({ isLoaded: true, items: result.products, isError });
+            setCards({ isLoaded: true, items: (result as IFetch).products, isError });
           },
           (error) => {
             setCards({
