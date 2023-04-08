@@ -3,13 +3,15 @@
 import React, { useEffect, useState } from 'react';
 import { MyState } from 'utils/types';
 import Card from './Card';
+import '../styles/_paginations.scss';
 
 function CardList() {
   const [cards, setCards] = useState<MyState>({ isError: null, isLoaded: false, items: [] });
   const { isError, isLoaded, items } = cards;
+  const [itemsPerPage, setItemsPerPage] = useState(0);
 
   useEffect(() => {
-    fetch('https://dummyjson.com/products')
+    fetch(`https://dummyjson.com/products?limit=10&skip=${itemsPerPage}`)
       .then((res) => res.json())
       .then(
         (result) => {
@@ -23,7 +25,7 @@ function CardList() {
           });
         }
       );
-  });
+  }, []);
 
   if (isError) {
     return <div>Error: {isError.message}</div>;
@@ -32,15 +34,21 @@ function CardList() {
     return <div style={{ textAlign: 'center' }}>Loading...</div>;
   }
   return (
-    <div className="card__list">
-      {Array.isArray(items)
-        ? items.map((item) => (
-            <div key={item.id}>
-              <Card {...item} />
-            </div>
-          ))
-        : null}
-    </div>
+    <>
+      <div className="card__list">
+        {Array.isArray(items)
+          ? items.map((item) => (
+              <div key={item.id}>
+                <Card {...item} />
+              </div>
+            ))
+          : null}
+      </div>
+      <div className="pages">
+        <button className="pages_prev">&laquo;</button>
+        <button className="pages_next">&raquo;</button>
+      </div>
+    </>
   );
 }
 
