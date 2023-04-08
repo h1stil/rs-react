@@ -8,10 +8,12 @@ import '../styles/_paginations.scss';
 function CardList() {
   const [cards, setCards] = useState<MyState>({ isError: null, isLoaded: false, items: [] });
   const { isError, isLoaded, items } = cards;
-  const [itemsPerPage, setItemsPerPage] = useState(0);
+  const [page, setPage] = useState(1);
 
+  const ITEMS_PER_PAGE = 10;
+  const TOTAL_ITEMS = 100;
   useEffect(() => {
-    fetch(`https://dummyjson.com/products?limit=10&skip=${itemsPerPage}`)
+    fetch(`https://dummyjson.com/products?limit=10&skip=${(page - 1) * ITEMS_PER_PAGE}`)
       .then((res) => res.json())
       .then(
         (result) => {
@@ -25,7 +27,8 @@ function CardList() {
           });
         }
       );
-  }, []);
+    setCards({ isLoaded: false, isError, items });
+  }, [page]);
 
   if (isError) {
     return <div>Error: {isError.message}</div>;
@@ -33,6 +36,8 @@ function CardList() {
   if (!isLoaded) {
     return <div style={{ textAlign: 'center' }}>Loading...</div>;
   }
+
+  console.log(page);
   return (
     <>
       <div className="card__list">
@@ -45,8 +50,36 @@ function CardList() {
           : null}
       </div>
       <div className="pages">
-        <button className="pages_prev">&laquo;</button>
-        <button className="pages_next">&raquo;</button>
+        {page > 1 ? (
+          <button
+            className="pages_prev "
+            onClick={() => {
+              setPage(page - 1);
+              setCards({ isLoaded: true, isError, items });
+            }}
+          >
+            &laquo;
+          </button>
+        ) : (
+          <button className="disabled" disabled>
+            &laquo;
+          </button>
+        )}
+        {page < TOTAL_ITEMS / ITEMS_PER_PAGE ? (
+          <button
+            className="pages_next"
+            onClick={() => {
+              setPage(page + 1);
+              setCards({ isLoaded: true, isError, items });
+            }}
+          >
+            &raquo;
+          </button>
+        ) : (
+          <button className="disabled" disabled>
+            &raquo;
+          </button>
+        )}
       </div>
     </>
   );
