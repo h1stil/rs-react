@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React, { useEffect, useState } from 'react';
-import { IFetch, MyCard, MyState } from 'utils/types';
+import { IFetch, MyState } from 'utils/types';
 import Card from './Card';
 import '../styles/_paginations.scss';
 
@@ -85,6 +85,7 @@ function CardList() {
         <div className="pages">
           {page > 1 ? (
             <button
+              type="button"
               className="pages_prev "
               onClick={() => {
                 setPage(page - 1);
@@ -94,12 +95,13 @@ function CardList() {
               &laquo;
             </button>
           ) : (
-            <button className="disabled" disabled>
+            <button type="button" className="disabled" disabled>
               &laquo;
             </button>
           )}
           {page < TOTAL_ITEMS / ITEMS_PER_PAGE ? (
             <button
+              type="button"
               className="pages_next"
               onClick={() => {
                 setPage(page + 1);
@@ -109,7 +111,7 @@ function CardList() {
               &raquo;
             </button>
           ) : (
-            <button className="disabled" disabled>
+            <button type="button" className="disabled" disabled>
               &raquo;
             </button>
           )}

@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 
 const renderWithRouter = (
-  ui: ReactElement<any, string | JSXElementConstructor<any>>,
+  ui: ReactElement<string | JSXElementConstructor<string>>,
   { route = '/' } = {}
 ) => {
   window.history.pushState({}, 'Test page', route);

@@ -47,6 +47,8 @@ module.exports = {
     'no-alert': 'off',
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'no-shadow': 'off',
+    'no-nested-ternary': 'off',
+    'no-promise-executor-return': 'off',
   },
   settings: {
     react: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { test } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import CardList from '../components/CardList';
 import mock from '../utils/mock';

@@ -15,7 +15,7 @@ function Card(props: MyCard) {
         <p className="price__stock">stock: {props.stock}</p>
         <p className="price__price">price: ${props.price}</p>
       </div>
-      <button className="card__details" onClick={() => setIsOpen(true)}>
+      <button type="button" className="card__details" onClick={() => setIsOpen(true)}>
         Details
       </button>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>

@@ -2,9 +2,10 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import '@testing-library/jest-dom';
-import App from '../App';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import App from '../App';
 import mock from '../utils/mock';
+
 mock();
 
 test('full app rendering/navigating', async () => {
