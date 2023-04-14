@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">11.11% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>1/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.27% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/22</span>
+                <span class='fraction'>0/22</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">11.11% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>1/9</span>
             </div>
         
             
@@ -217,7 +217,8 @@
 <a name='L152'></a><a href='#L152'>152</a>
 <a name='L153'></a><a href='#L153'>153</a>
 <a name='L154'></a><a href='#L154'>154</a>
-<a name='L155'></a><a href='#L155'>155</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -237,19 +238,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -257,11 +246,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -378,10 +380,8 @@ import { useForm } from 'react-hook-form';
 &nbsp;
 import { IFormCard } from 'utils/types';
 import '../styles/_form.scss';
-&nbsp;
-type FormProps = {
-  createCard: (card: IFormCard) =&gt; void;
-};
+import { useAppDispatch } from '../app/hooks';
+import { createPost } from '../features/posts/postsSlice';
 &nbsp;
 type FormValues = {
   name: string;
@@ -392,15 +392,17 @@ type FormValues = {
   sex: string | null;
 };
 &nbsp;
-function Form({ createCard }: FormProps) {
+function Form() {
+  const dispatch = useAppDispatch();
+&nbsp;
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm&lt;FormValues&gt;({ mode: 'onSubmit' });
+  } = <span class="cstat-no" title="statement not covered" >useForm&lt;FormValues&gt;({ mode: 'onSubmit' });</span>
 &nbsp;
-  const onSubmit = <span class="fstat-no" title="function not covered" >(d</span>ata: FormValues) =&gt; {
+  const onSubmit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata: FormValues) =&gt; {</span>
     const cardData: IFormCard = <span class="cstat-no" title="statement not covered" >{</span>
       name: data.name || '',
       sex: data.sex! || '',
@@ -410,12 +412,13 @@ function Form({ createCard }: FormProps) {
       file: URL.createObjectURL(data.avatar[0] as unknown as Blob | MediaSource),
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    createCard(cardData);</span>
+<span class="cstat-no" title="statement not covered" >    dispatch(createPost(cardData));</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    alert('Card created');</span>
 <span class="cstat-no" title="statement not covered" >    reset();</span>
   };
 &nbsp;
-  return (
+<span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;form onSubmit={handleSubmit(onSubmit)} className="form"&gt;
       &lt;label htmlFor="username-input"&gt;
         &lt;span&gt;Name&lt;/span&gt;
@@ -430,7 +433,7 @@ function Form({ createCard }: FormProps) {
           })}
         /&gt;
       &lt;/label&gt;
-      {errors.name &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Name is required (min 3 characters)&lt;/p&gt;}</span>
+      {errors.name &amp;&amp; &lt;p className="form__error"&gt;Name is required (min 3 characters)&lt;/p&gt;}
       &lt;label htmlFor="date-input"&gt;
         &lt;span&gt;Birthday&lt;/span&gt;
         &lt;input
@@ -441,7 +444,7 @@ function Form({ createCard }: FormProps) {
           })}
         /&gt;
       &lt;/label&gt;
-      {errors.date &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Enter date&lt;/p&gt;}</span>
+      {errors.date &amp;&amp; &lt;p className="form__error"&gt;Enter date&lt;/p&gt;}
       &lt;label htmlFor="language-select"&gt;
         &lt;span&gt;Language&lt;/span&gt;
         &lt;select
@@ -459,7 +462,7 @@ function Form({ createCard }: FormProps) {
           &lt;option value="Other"&gt;Other&lt;/option&gt;
         &lt;/select&gt;
       &lt;/label&gt;
-      {errors.language &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Choose one language&lt;/p&gt;}</span>
+      {errors.language &amp;&amp; &lt;p className="form__error"&gt;Choose one language&lt;/p&gt;}
       &lt;div&gt;
         &lt;span&gt;Sex&lt;/span&gt;
         &lt;div&gt;
@@ -485,7 +488,7 @@ function Form({ createCard }: FormProps) {
           &lt;p&gt;female&lt;/p&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      {errors.sex &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Enter your sex&lt;/p&gt;}</span>
+      {errors.sex &amp;&amp; &lt;p className="form__error"&gt;Enter your sex&lt;/p&gt;}
       &lt;label htmlFor="file-input"&gt;
         &lt;span&gt;Avatar&lt;/span&gt;
         &lt;input
@@ -505,7 +508,7 @@ function Form({ createCard }: FormProps) {
           }}
         /&gt;
       &lt;/label&gt;
-      {errors.avatar &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Upload avatar&lt;/p&gt;}</span>
+      {errors.avatar &amp;&amp; &lt;p className="form__error"&gt;Upload avatar&lt;/p&gt;}
       &lt;label htmlFor="terms-input"&gt;
         &lt;span&gt;I consent to my personal data&lt;/span&gt;
         &lt;input
@@ -516,7 +519,7 @@ function Form({ createCard }: FormProps) {
           })}
         /&gt;
       &lt;/label&gt;
-      {errors.terms &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Confirm personal data&lt;/p&gt;}</span>
+      {errors.terms &amp;&amp; &lt;p className="form__error"&gt;Confirm personal data&lt;/p&gt;}
       &lt;button type="submit" data-testid="submit-button"&gt;
         Submit
       &lt;/button&gt;
@@ -532,7 +535,7 @@ export default Form;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-08T18:05:33.904Z
+                at 2023-04-14T14:18:33.466Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

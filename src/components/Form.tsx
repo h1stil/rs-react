@@ -5,10 +5,8 @@ import { useForm } from 'react-hook-form';
 
 import { IFormCard } from 'utils/types';
 import '../styles/_form.scss';
-
-type FormProps = {
-  createCard: (card: IFormCard) => void;
-};
+import { useAppDispatch } from '../app/hooks';
+import { createPost } from '../features/posts/postsSlice';
 
 type FormValues = {
   name: string;
@@ -19,7 +17,9 @@ type FormValues = {
   sex: string | null;
 };
 
-function Form({ createCard }: FormProps) {
+function Form() {
+  const dispatch = useAppDispatch();
+
   const {
     register,
     handleSubmit,
@@ -37,7 +37,8 @@ function Form({ createCard }: FormProps) {
       file: URL.createObjectURL(data.avatar[0] as unknown as Blob | MediaSource),
     };
 
-    createCard(cardData);
+    dispatch(createPost(cardData));
+
     alert('Card created');
     reset();
   };

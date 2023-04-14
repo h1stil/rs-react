@@ -1,13 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { IFormCard } from 'utils/types';
 
 export const postsSlice = createSlice({
   name: 'posts',
-  initialState: {
-    value: [],
-  },
+  initialState: [],
   reducers: {
-    createPost: (state, action) => {
-      state.value.concat(action.payload);
+    createPost: (state: IFormCard[], action) => {
+      state.push(action.payload);
     },
   },
 });
