@@ -1,18 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import '../styles/_search.scss';
+import { useAppSelector, useAppDispatch } from '../app/hooks';
+import { setSearch } from '../features/search/searchSlice';
+import { RootState } from '../app/store';
 
 function Search() {
-  const [searchValue, setSearchValue] = useState('');
+  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    const search = localStorage.getItem('search');
-    if (search) {
-      setSearchValue(search);
-    }
-  }, []);
+  const search = useAppSelector((state: RootState) => state.search.search);
+
+  const [searchValue, setSearchValue] = useState(search);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.target.value;
@@ -20,8 +20,7 @@ function Search() {
   };
 
   const handleFormSubmit = () => {
-    localStorage.setItem('search', searchValue);
-    window.dispatchEvent(new Event('storage'));
+    dispatch(setSearch(searchValue));
   };
 
   return (

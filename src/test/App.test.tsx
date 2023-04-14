@@ -28,6 +28,5 @@ test('landing on a bad page', () => {
     </MemoryRouter>
   );
 
-  // verify navigation to "no match" route
   expect(screen.getByText(/Page not found/i)).toBeInTheDocument();
 });

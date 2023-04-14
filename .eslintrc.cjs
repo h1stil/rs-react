@@ -49,6 +49,7 @@ module.exports = {
     'no-shadow': 'off',
     'no-nested-ternary': 'off',
     'no-promise-executor-return': 'off',
+    'no-param-reassign': 0,
   },
   settings: {
     react: {

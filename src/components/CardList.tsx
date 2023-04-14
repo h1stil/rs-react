@@ -1,27 +1,26 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React, { useEffect, useState } from 'react';
+
 import { IFetch, MyState } from 'utils/types';
+import { RootState } from 'app/store';
 import Card from './Card';
 import '../styles/_paginations.scss';
+import { useAppSelector } from '../app/hooks';
 
 function CardList() {
   const [cards, setCards] = useState<MyState>({ isError: null, isLoaded: false, items: [] });
   const { isError, isLoaded, items } = cards;
   const [page, setPage] = useState(1);
-  const [searchInput, setSearchInput] = useState(localStorage.getItem('search') || '');
+  const search = useAppSelector((state: RootState) => state.search.search);
+  const [searchInput, setSearchInput] = useState(search);
 
   const ITEMS_PER_PAGE = 10;
   const TOTAL_ITEMS = 100;
 
   useEffect(() => {
-    const handleStorage = () => {
-      setSearchInput(localStorage.getItem('search') || '');
-    };
-
-    window.addEventListener('storage', handleStorage);
-    return () => window.removeEventListener('storage', handleStorage);
-  }, []);
+    setSearchInput(search);
+  }, [search]);
 
   useEffect(() => {
     if (searchInput) {
