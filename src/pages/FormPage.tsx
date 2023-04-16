@@ -18,7 +18,7 @@ function FormPage() {
   document.title = 'Form';
 
   return (
-    <>
+    <div data-testid="forms-page">
       <div className="form__container">
         <h2>Create card</h2>
         <Form />
@@ -28,7 +28,7 @@ function FormPage() {
           <FormCard key={card.name} {...card} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

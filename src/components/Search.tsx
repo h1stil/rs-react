@@ -38,8 +38,8 @@ function Search() {
           autoComplete="off"
           value={searchValue}
           onChange={handleChange}
-          onBlur={() => handleFormSubmit()}
           id="search-input"
+          data-testid="search-input"
         />
         <button type="submit">
           <FontAwesomeIcon icon={faMagnifyingGlass} />

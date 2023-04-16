@@ -1,6 +1,6 @@
 import { vi } from 'vitest';
 
-function mock() {
+export function mock() {
   global.fetch = vi.fn().mockResolvedValue({
     json: () =>
       new Promise((resolve) =>
@@ -34,4 +34,11 @@ function mock() {
   });
 }
 
-export default mock;
+export const cardData = {
+  name: 'test name',
+  sex: 'male',
+  birthday: '01/01/2000',
+  language: 'English',
+  terms: true,
+  file: 'src',
+};

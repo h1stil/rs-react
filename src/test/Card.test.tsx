@@ -7,7 +7,7 @@ describe('Testing CardList', () => {
   const card = render(
     <Card
       id={0}
-      title=""
+      title="test card"
       description=""
       price={0}
       discountPercentage={0}
@@ -21,9 +21,9 @@ describe('Testing CardList', () => {
   );
 
   it('check Card', () => {
-    expect(document.querySelector('.card')).toBeInTheDocument();
-
     const img = card.container.querySelector('img');
+
+    expect(document.querySelector('.card')).toBeInTheDocument();
     expect(img).toBeInTheDocument();
   });
 });

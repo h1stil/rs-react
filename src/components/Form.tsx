@@ -44,7 +44,7 @@ function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="form">
+    <form onSubmit={handleSubmit(onSubmit)} className="form" data-testid="form">
       <label htmlFor="username-input">
         <span>Name</span>
         <input
@@ -64,6 +64,7 @@ function Form() {
         <input
           type="date"
           id="date-input"
+          data-testid="birthday-input"
           {...register('date', {
             required: 'The field is required',
           })}
@@ -75,6 +76,7 @@ function Form() {
         <select
           id="language-select"
           defaultValue="English"
+          data-testid="language-input"
           {...register('language', {
             required: 'The field is required',
           })}
@@ -95,6 +97,7 @@ function Form() {
             {...register('sex', { required: 'The field is required' })}
             type="radio"
             id="sex-male-input"
+            data-testid="male-input"
             name="sex"
             value="male"
           />
@@ -107,6 +110,7 @@ function Form() {
             })}
             type="radio"
             id="sex-female-input"
+            data-testid="female-input"
             name="sex"
             value="female"
           />
@@ -119,6 +123,7 @@ function Form() {
         <input
           type="file"
           id="file-input"
+          data-testid="file-input"
           style={{ display: 'none' }}
           accept="image/*"
           {...register('avatar', {
@@ -139,6 +144,7 @@ function Form() {
         <input
           type="checkbox"
           id="terms-input"
+          data-testid="terms-input"
           {...register('terms', {
             required: 'The field is required',
           })}

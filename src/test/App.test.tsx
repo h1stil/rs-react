@@ -1,32 +1,37 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import React from 'react';
-import '@testing-library/jest-dom';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import renderWithProvider from '../utils/renderWithProvider';
 import App from '../App';
-import mock from '../utils/mock';
 
-mock();
+describe('App router', () => {
+  it('render home page', () => {
+    renderWithProvider(<App />, '/');
+    expect(screen.getByTestId('home-page')).toBeInTheDocument();
+  });
 
-test('full app rendering/navigating', async () => {
-  render(<App />, { wrapper: BrowserRouter });
-  const user = userEvent.setup();
+  it('render about page', () => {
+    renderWithProvider(<App />, '/about');
+    expect(screen.getByTestId('about-page')).toBeInTheDocument();
+  });
 
-  await user.click(screen.getByText(/about/i));
-  expect(screen.getByText('about us')).toBeInTheDocument();
+  it('render forms page', () => {
+    renderWithProvider(<App />, '/form');
+    expect(screen.getByTestId('forms-page')).toBeInTheDocument();
+  });
 
-  await user.click(screen.getByText(/form/i));
-  expect(screen.getByText('Create card')).toBeInTheDocument();
-});
+  it('render 404 page', () => {
+    renderWithProvider(<App />, '/pagenotfound1');
+    expect(screen.getByTestId('404-page')).toBeInTheDocument();
+  });
 
-test('landing on a bad page', () => {
-  const badRoute = '/some/bad/route';
+  it('check router', async () => {
+    renderWithProvider(<App />);
 
-  render(
-    <MemoryRouter initialEntries={[badRoute]}>
-      <App />
-    </MemoryRouter>
-  );
+    expect(screen.getByTestId('home-link')).toBeInTheDocument();
+    expect(screen.getByTestId('about-link')).toBeInTheDocument();
 
-  expect(screen.getByText(/Page not found/i)).toBeInTheDocument();
+    await userEvent.click(screen.getByTestId('about-link'));
+    expect(screen.getByTestId('about-page')).toBeInTheDocument();
+  });
 });

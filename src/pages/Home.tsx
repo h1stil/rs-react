@@ -6,10 +6,10 @@ import Search from '../components/Search';
 function Home() {
   document.title = 'RSS React';
   return (
-    <>
+    <div data-testid="home-page">
       <Search />
       <CardList />
-    </>
+    </div>
   );
 }
 

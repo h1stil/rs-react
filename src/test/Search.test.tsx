@@ -1,33 +1,30 @@
 import React from 'react';
-import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, it } from 'vitest';
+
 import Search from '../components/Search';
+import { Provider } from 'react-redux';
+import { store } from '../app/store';
 
-describe('Testing SearchInput', () => {
-  it('check Search creating', () => {
-    localStorage.setItem('search', 'text');
-    const search = render(<Search />);
-    expect(search).toBeTruthy();
-
-    const input = search.container.querySelector('#search-input') as HTMLInputElement | null;
-    expect(input).toBeTruthy();
-    expect(input).toHaveValue('text');
-
-    if (input) {
-      input.textContent = 'change text';
-      expect(input.textContent).toBe('change text');
-
-      expect(input.type).toBe('text');
-    }
+describe('test input type search', () => {
+  it('Render search placeholder', () => {
+    render(
+      <Provider store={store}>
+        <Search />
+      </Provider>
+    );
+    expect(screen.getByPlaceholderText('Search...')).toBeInTheDocument();
   });
-  it('change input value', async () => {
-    localStorage.setItem('search', '');
 
-    render(<Search />);
-    const input = screen.getByRole('textbox');
-    expect(input).toBeInTheDocument();
-    await userEvent.type(input, 'Search something');
-    expect(input).toHaveValue('Search something');
+  it('Change search value', async () => {
+    render(
+      <Provider store={store}>
+        <Search />
+      </Provider>
+    );
+    const searchInput: HTMLInputElement = screen.getByTestId('search-input');
+    await userEvent.type(searchInput, 'phone');
+    expect(searchInput.value).toBe('phone');
   });
 });

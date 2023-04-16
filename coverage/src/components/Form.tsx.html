@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>4/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">27.27% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/22</span>
+                <span class='fraction'>6/22</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>4/9</span>
             </div>
         
             
@@ -218,7 +218,13 @@
 <a name='L153'></a><a href='#L153'>153</a>
 <a name='L154'></a><a href='#L154'>154</a>
 <a name='L155'></a><a href='#L155'>155</a>
-<a name='L156'></a><a href='#L156'>156</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -238,7 +244,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -251,19 +269,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -350,6 +361,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -400,9 +412,9 @@ function Form() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = <span class="cstat-no" title="statement not covered" >useForm&lt;FormValues&gt;({ mode: 'onSubmit' });</span>
+  } = useForm&lt;FormValues&gt;({ mode: 'onSubmit' });
 &nbsp;
-  const onSubmit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata: FormValues) =&gt; {</span>
+  const onSubmit = <span class="fstat-no" title="function not covered" >(d</span>ata: FormValues) =&gt; {
     const cardData: IFormCard = <span class="cstat-no" title="statement not covered" >{</span>
       name: data.name || '',
       sex: data.sex! || '',
@@ -418,8 +430,8 @@ function Form() {
 <span class="cstat-no" title="statement not covered" >    reset();</span>
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;form onSubmit={handleSubmit(onSubmit)} className="form"&gt;
+  return (
+    &lt;form onSubmit={handleSubmit(onSubmit)} className="form" data-testid="form"&gt;
       &lt;label htmlFor="username-input"&gt;
         &lt;span&gt;Name&lt;/span&gt;
         &lt;input
@@ -433,23 +445,25 @@ function Form() {
           })}
         /&gt;
       &lt;/label&gt;
-      {errors.name &amp;&amp; &lt;p className="form__error"&gt;Name is required (min 3 characters)&lt;/p&gt;}
+      {errors.name &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Name is required (min 3 characters)&lt;/p&gt;}</span>
       &lt;label htmlFor="date-input"&gt;
         &lt;span&gt;Birthday&lt;/span&gt;
         &lt;input
           type="date"
           id="date-input"
+          data-testid="birthday-input"
           {...register('date', {
             required: 'The field is required',
           })}
         /&gt;
       &lt;/label&gt;
-      {errors.date &amp;&amp; &lt;p className="form__error"&gt;Enter date&lt;/p&gt;}
+      {errors.date &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Enter date&lt;/p&gt;}</span>
       &lt;label htmlFor="language-select"&gt;
         &lt;span&gt;Language&lt;/span&gt;
         &lt;select
           id="language-select"
           defaultValue="English"
+          data-testid="language-input"
           {...register('language', {
             required: 'The field is required',
           })}
@@ -462,7 +476,7 @@ function Form() {
           &lt;option value="Other"&gt;Other&lt;/option&gt;
         &lt;/select&gt;
       &lt;/label&gt;
-      {errors.language &amp;&amp; &lt;p className="form__error"&gt;Choose one language&lt;/p&gt;}
+      {errors.language &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Choose one language&lt;/p&gt;}</span>
       &lt;div&gt;
         &lt;span&gt;Sex&lt;/span&gt;
         &lt;div&gt;
@@ -470,6 +484,7 @@ function Form() {
             {...register('sex', { required: 'The field is required' })}
             type="radio"
             id="sex-male-input"
+            data-testid="male-input"
             name="sex"
             value="male"
           /&gt;
@@ -482,18 +497,20 @@ function Form() {
             })}
             type="radio"
             id="sex-female-input"
+            data-testid="female-input"
             name="sex"
             value="female"
           /&gt;
           &lt;p&gt;female&lt;/p&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      {errors.sex &amp;&amp; &lt;p className="form__error"&gt;Enter your sex&lt;/p&gt;}
+      {errors.sex &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Enter your sex&lt;/p&gt;}</span>
       &lt;label htmlFor="file-input"&gt;
         &lt;span&gt;Avatar&lt;/span&gt;
         &lt;input
           type="file"
           id="file-input"
+          data-testid="file-input"
           style={{ display: 'none' }}
           accept="image/*"
           {...register('avatar', {
@@ -508,18 +525,19 @@ function Form() {
           }}
         /&gt;
       &lt;/label&gt;
-      {errors.avatar &amp;&amp; &lt;p className="form__error"&gt;Upload avatar&lt;/p&gt;}
+      {errors.avatar &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Upload avatar&lt;/p&gt;}</span>
       &lt;label htmlFor="terms-input"&gt;
         &lt;span&gt;I consent to my personal data&lt;/span&gt;
         &lt;input
           type="checkbox"
           id="terms-input"
+          data-testid="terms-input"
           {...register('terms', {
             required: 'The field is required',
           })}
         /&gt;
       &lt;/label&gt;
-      {errors.terms &amp;&amp; &lt;p className="form__error"&gt;Confirm personal data&lt;/p&gt;}
+      {errors.terms &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;p className="form__error"&gt;Confirm personal data&lt;/p&gt;}</span>
       &lt;button type="submit" data-testid="submit-button"&gt;
         Submit
       &lt;/button&gt;
@@ -535,7 +553,7 @@ export default Form;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-04-14T14:18:33.466Z
+                at 2023-04-16T21:11:55.143Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
