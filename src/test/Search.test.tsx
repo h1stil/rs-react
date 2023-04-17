@@ -2,9 +2,9 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it } from 'vitest';
+import { Provider } from 'react-redux';
 
 import Search from '../components/Search';
-import { Provider } from 'react-redux';
 import { store } from '../app/store';
 
 describe('test input type search', () => {
